@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "460856664873",
+    "project_id": "hang-c1561",
+    "storage_bucket": "hang-c1561.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460856664873:android:475e30cb8c180cd9264d38",
+        "android_client_info": {
+          "package_name": "com.example.han_gom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460856664873-ljj8a6eh7qf5fjci13urtp2o9jgl4adn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZAeT5Rf9pNgAWT5EmwbC9t35MEaIULhY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460856664873-ljj8a6eh7qf5fjci13urtp2o9jgl4adn.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "460856664873-o0reggadnic5rmabppf92jfvcsi72uf2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hanGom"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

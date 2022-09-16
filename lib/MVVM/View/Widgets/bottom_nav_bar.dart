@@ -9,7 +9,7 @@ import '../../../Utils/constans.dart';
 class CustomBottomNavigationBar extends StatefulWidget {
   final int defaultSelectedIndex;
   final Function(int) onChange;
-  final List<IconData> iconList;
+  final List<String> iconList;
 
   CustomBottomNavigationBar(
       {this.defaultSelectedIndex = 0,
@@ -23,7 +23,7 @@ class CustomBottomNavigationBar extends StatefulWidget {
 
 class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   int _selectedIndex = 0;
-  List<IconData> _iconList = [];
+  List<String> _iconList = [];
 
   @override
   void initState() {
@@ -47,7 +47,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     );
   }
 
-  Widget buildNavBarItem(IconData icon, int index) {
+  Widget buildNavBarItem(String icon, int index) {
     return GestureDetector(
       onTap: () {
 
@@ -58,6 +58,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       },
       child: Container(
         height: 60,
+
         width: MediaQuery.of(context).size.width / _iconList.length,
         decoration: index == _selectedIndex
             ? BoxDecoration(
@@ -65,15 +66,20 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               bottom: BorderSide(width: 4, color: PrimaryColor),
             ),
             gradient: LinearGradient(colors: [
-              PrimaryColor.withOpacity(0.17),
-              PrimaryColor.withOpacity(0.015),
+              PrimaryColor.withOpacity(0),
+              PrimaryColor.withOpacity(0),
             ], begin: Alignment.bottomCenter, end: Alignment.topCenter)
           // color: index == _selectedItemIndex ? Colors.green : Colors.white,
         )
             : BoxDecoration(),
-        child: Icon(
-          icon,
-          color: index == _selectedIndex ? PrimaryColor : Colors.grey,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: ImageIcon(
+
+            AssetImage(icon),
+
+            color: index == _selectedIndex ? PrimaryColor : Colors.grey,
+          ),
         ),
       ),
     );

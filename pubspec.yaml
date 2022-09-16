@@ -45,15 +45,25 @@ dev_dependencies:
   http: ^0.13.4
   fluttertoast: ^8.0.8
   page_transition: "^2.0.5"
-  kakao_flutter_sdk: ^1.1.1
+  kakao_flutter_sdk: ^1.2.2
   carousel_slider: ^4.1.1
+
+#  firebase_auth: ^3.3.16
+
   permission_handler: ^10.0.0
+  webview_flutter: ^3.0.4
+  firestore_search: ^0.1.9
+  get: ^4.3.8
+  firebase_core_platform_interface: ^4.5.1
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  firebase_core: ^1.22.0
+
+  cloud_firestore: ^3.4.7
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -73,6 +83,35 @@ flutter:
   assets:
     - assets/images/test1.jpeg
     - assets/images/test2.jpeg
+    - assets/images/icons/bottom_nav/home_icon.png
+    - assets/images/icons/bottom_nav/map_icon.png
+    - assets/images/icons/bottom_nav/solution_icon.png
+    - assets/images/icons/bottom_nav/mypage_icon.png
+    - assets/images/icons/main_icon.png
+    - assets/images/hello_text.png
+    - assets/images/map_text.png
+    - assets/images/apple_oauth.png
+    - assets/images/icons/cure_tool_icon/13.png
+    - assets/images/icons/cure_tool_icon/14.png
+    - assets/images/icons/cure_tool_icon/15.png
+    - assets/images/icons/cure_tool_icon/16.png
+    - assets/images/icons/cure_tool_icon/17.png
+    - assets/images/icons/cure_tool_icon/18.png
+    - assets/images/icons/cure_tool_icon/19.png
+    - assets/images/icons/cure_tool_icon/20.png
+    - assets/images/icons/cure_tool_icon/21.png
+    - assets/images/icons/cure_tool_icon/22.png
+    - assets/images/icons/cure_icon/cure_img1.png
+    - assets/images/icons/cure_icon/cure_img2.png
+    - assets/images/icons/cure_icon/cure_img3.png
+    - assets/images/icons/cure_icon/cure_img4.png
+    - assets/images/icons/cure_icon/cure_img5.png
+    - assets/images/icons/cure_icon/cure_img6.png
+    - assets/images/icons/cure_icon/cure_img7.png
+    - assets/images/icons/cure_icon/cure_img8.png
+    - assets/images/icons/cure_icon/cure_img9.png
+    - assets/images/icons/cure_icon/cure_img10.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

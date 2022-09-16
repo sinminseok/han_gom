@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:han_gom/MVVM/View/App/Communication/Communication_view.dart';
 import 'package:han_gom/MVVM/View/App/Home/Home_view.dart';
+import 'package:han_gom/MVVM/View/App/Mypage/Mypage_View.dart';
 import 'package:han_gom/MVVM/View/App/Search/Search_view.dart';
 import 'package:han_gom/MVVM/View/App/Solution/Solution.dart';
 
@@ -21,7 +22,8 @@ class _Frame_ViewState extends State<Frame_View> {
     Home_View(),
     Solution_View(),
     Search_View(),
-    Communication_View()
+    MyPage_View()
+
   ];
 
   @override
@@ -31,11 +33,13 @@ class _Frame_ViewState extends State<Frame_View> {
       child: Scaffold(
           resizeToAvoidBottomInset: false,
           bottomNavigationBar: CustomBottomNavigationBar(
+
             iconList: [
-              Icons.home,
-              Icons.calendar_today,
-              Icons.local_shipping,
-              Icons.person,
+              "assets/images/icons/bottom_nav/home_icon.png",
+              "assets/images/icons/bottom_nav/solution_icon.png",
+              "assets/images/icons/bottom_nav/map_icon.png",
+              "assets/images/icons/bottom_nav/mypage_icon.png",
+
             ],
             onChange: (val) {
               setState(() {
