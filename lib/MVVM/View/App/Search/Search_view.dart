@@ -18,6 +18,60 @@ class _Search_ViewState extends State<Search_View> {
 
   TextEditingController _searchController = TextEditingController();
 
+  void showDefaultHeightModalBottomSheet(BuildContext context, Size size) {
+    showModalBottomSheet(
+      context: context,
+      builder: (
+          BuildContext context,
+          ) {
+        return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        "사전식 정보",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: PrimaryColor,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 20.0),
+                      child: InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Icon(Icons.close)),
+                    )
+                  ],
+                ),
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      width: size.width * 0.87,
+                      height: size.height * 0.4,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(color: PrimaryColor, width: 2),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ));
+      },
+    );
+  }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -63,7 +117,9 @@ class _Search_ViewState extends State<Search_View> {
                     hintText: '어떤 통증이 있나요?',
                     hintStyle: TextStyle(fontSize: 15,color: Colors.grey),
                     border: InputBorder.none,
-                    suffixIcon: Icon(Icons.search)
+                    suffixIcon: InkWell(
+
+                        child: Icon(Icons.search))
                   ),
                   controller: _searchController,
 

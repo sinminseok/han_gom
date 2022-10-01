@@ -166,28 +166,33 @@ class _Home_Search_ViewState extends State<Home_Search_View> {
                   ),
                   child: Center(
                     child: TextField(
+                      decoration: InputDecoration(
+                          suffixIcon: InkWell(
+                              onTap: (){
+                                setState(() {
+                                  search_cure_tool_list = [];
+                                  search_cure_disease_list = [];
+                                });
+
+                                if (_searchController.text == "") {
+                                  return;
+                                } else {
+                                  search_results();
+
+                                }
+                              },
+                              child: Icon(Icons.search)),
+                          hintText: 'Username'
+                      ),
                       controller: _searchController,
+
 
                     ),
                   ),
                 ),
               ),
             ),
-            InkWell(
-                onTap: () {
-                  setState(() {
-                    search_cure_tool_list = [];
-                    search_cure_disease_list = [];
-                  });
 
-                  if (_searchController.text == "") {
-                    return;
-                  } else {
-                    search_results();
-
-                  }
-                },
-                child: Text("검색하기")),
             SizedBox(
               height: size.height * 0.04,
             ),
