@@ -1,5 +1,5 @@
-// abstract class SocialLogin {
-//   Future<bool> login();
-//
-//   Future<bool> logout();
-// }
+abstract class SocialLogin {
+  Future<bool> login();
+
+  Future<bool> logout();
+}

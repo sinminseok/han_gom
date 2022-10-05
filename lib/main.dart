@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:kakao_flutter_sdk_common/kakao_flutter_sdk_common.dart';
-import 'MVVM/View/App/Frame_View.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'View/App/Account/SignIn_View.dart';
+import 'View/App/Frame/Frame_View.dart';
+import 'ViewModel/Account/User_Controller.dart';
+import 'ViewModel/Cure_disease_ViewModel.dart';
+import 'ViewModel/Cure_tool_ViewModel.dart';
 
-import 'MVVM/ViewModel/Cure_disease_ViewModel.dart';
-import 'MVVM/ViewModel/Cure_tool_ViewModel.dart';
+
+
 void main() async{
   KakaoSdk.init(nativeAppKey: 'f955b0693ad1bd411fa28923171a0d8c');
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,18 +20,26 @@ void main() async{
 
   runApp(
     MultiProvider(providers: [
+      //User_Controller
       ChangeNotifierProvider(create: (context) => Cure_tool_ViewModel()),
       ChangeNotifierProvider(create: (context) => Cure_disease_ViewModel()),
+      ChangeNotifierProvider(create: (context) => User_Controller()),
 
     ], child: MyApp()),
   );
 }
-
 Future<void> initializeDefault() async {
 
   FirebaseApp app = await Firebase.initializeApp();
 
 }
+
+// Future<void> initializeDefault() async {
+//   FirebaseApp app = await Firebase.initializeApp(
+//     options: DefaultFirebaseOptions.currentPlatform,
+//   );
+//   print('Initialized default app $app');
+// }
 
 class MyApp extends StatelessWidget {
 
@@ -34,10 +49,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-    return  MaterialApp(
-      //Wrapper로 바꿔줘야댐
-
-      home:Frame_View(),
+    return ScreenUtilInit(
+      designSize: const Size(390, 789),
+      minTextAdapt: false,
+      splitScreenMode: false,
+      builder: (context, child) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Frame_View(),
+        );
+      },
+      child: const Frame_View(),
     );
   }
 }

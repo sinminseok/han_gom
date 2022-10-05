@@ -2,11 +2,26 @@
     package="com.example.han_gom">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Provide required visibility configuration for API level 30 and above -->
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
 
    <application
         android:label="han_gom"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+
 
        <activity android:name="com.kakao.sdk.flutter.AuthCodeCustomTabsActivity">
            <intent-filter android:label="flutter_web_auth">
