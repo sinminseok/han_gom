@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:firebase_storage/firebase_storage.dart';
 import '../../../../../Utils/constans.dart';
 import 'package:han_gom/Utils/constans.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 import '../../../../ViewModel/Cure_disease_ViewModel.dart';
 import '../../../../ViewModel/Cure_tool_ViewModel.dart';
-
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 //치료 가능 질환 상세페이지
 class Cure_Detail_View extends StatefulWidget {
@@ -21,6 +21,11 @@ class Cure_Detail_View extends StatefulWidget {
 }
 
 class _Cure_Detail_ViewState extends State<Cure_Detail_View> {
+
+  String? downloadURL;
+  String? title;
+  String? content;
+
   void showDefaultHeightModalBottomSheet(BuildContext context, Size size) {
     showModalBottomSheet(
       context: context,
@@ -75,6 +80,17 @@ class _Cure_Detail_ViewState extends State<Cure_Detail_View> {
     );
   }
 
+
+  future_void()async{
+    var storageRef = FirebaseStorage.instance.ref().child('cure_disease/cure1.png');
+
+    downloadURL = await storageRef.getDownloadURL();
+    var return_value = Provider.of<Cure_disease_ViewModel>(context, listen: false).return_collection_doc_value(widget.doc_path!);
+
+    title = Provider.of<Cure_disease_ViewModel>(context, listen: false).cure_disease_model!.title;
+    content = Provider.of<Cure_disease_ViewModel>(context, listen: false).cure_disease_model!.content;
+    return return_value;
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -87,8 +103,7 @@ class _Cure_Detail_ViewState extends State<Cure_Detail_View> {
           backgroundColor: Colors.white,
         ),
         body: FutureBuilder(
-          future: Provider.of<Cure_disease_ViewModel>(context, listen: false)
-              .return_collection_doc_value(widget.doc_path!),
+          future: future_void(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasError) {
               return Text("Something went wrong");
@@ -109,14 +124,25 @@ class _Cure_Detail_ViewState extends State<Cure_Detail_View> {
                       height: size.height * 0.23,
                       color: PrimaryColor,
                       child: Text(
-                          "${Provider.of<Cure_disease_ViewModel>(context, listen: false).cure_disease_model!.title}"),
+                          "${title}"),
+                    ),
+                    Container(
+                      child: Image(
+                        image: NetworkImage(
+                            downloadURL!
+                        ),
+                      ),
                     ),
                   ],
                 ),
               );
             }
 
-            return Text("loading");
+            return Center(
+                child: LoadingAnimationWidget.staggeredDotsWave(
+                  color: Colors.black,
+                  size: 100,
+                ));
           },
         ));
   }

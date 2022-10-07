@@ -31,8 +31,8 @@ class Cure_disease_Widget extends StatelessWidget {
             Stack(
               children: [
                 Container(
-                  width: 50.w,
-                  height: 50.h,
+                  width: 40.w,
+                  height: 40.h,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
                     color: Colors.grey.shade200,

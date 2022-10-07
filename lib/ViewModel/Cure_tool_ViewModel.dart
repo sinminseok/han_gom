@@ -6,10 +6,7 @@ import '../Model/Cure_tool_Model.dart';
 
 class Cure_tool_ViewModel with ChangeNotifier {
 
-
-
   Cure_tool_Model? _cure_tool_Model;
-
   Cure_tool_Model? get cure_tool_Model => _cure_tool_Model;
 
   return_collection_doc_value(String doc_path) async {
@@ -24,8 +21,6 @@ class Cure_tool_ViewModel with ChangeNotifier {
 
     _cure_tool_Model = Cure_tool_Model.fromJson(cure_tool_object.data());
     notifyListeners();
-    print(_cure_tool_Model!.content);
-
 
     // Cure_tool_Model tet = cure_tool_object.
   }

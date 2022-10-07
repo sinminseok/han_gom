@@ -24,13 +24,11 @@ class Tool_Widget extends StatelessWidget {
                 type: PageTransitionType.fade,
                 child: Tool_Detail_View(doc_path: doc_path,)));
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Container(
-              width: size.width*0.13,
-              height: size.width *0.13,
+      child:  Column(
+        children: [
+          Container(
+              width: 35.w,
+              height: 35.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 color: SecondaryColor,
@@ -38,10 +36,9 @@ class Tool_Widget extends StatelessWidget {
               child: CircleAvatar(
                 backgroundImage: AssetImage(assets_image),
               )
-            ),
-            Text("$text",style: TextStyle(fontSize: 12.sp,fontWeight: FontWeight.bold),)
-          ],
-        ),
+          ),
+          Text("$text",style: TextStyle(fontSize: 12.sp,fontWeight: FontWeight.bold),)
+        ],
       ),
     );
   }

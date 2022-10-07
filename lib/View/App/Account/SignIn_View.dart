@@ -33,7 +33,7 @@ class _SignIn_ViewState extends State<SignIn_View> {
 
   //apple oauth 로그인 함수
   Future<firebaseauth.UserCredential> signInWithApple() async {
-    print("apple1");
+
     final appleCredential = await SignInWithApple.getAppleIDCredential(
       scopes: [
         AppleIDAuthorizationScopes.email,
@@ -41,6 +41,7 @@ class _SignIn_ViewState extends State<SignIn_View> {
       ],
 
     );
+
     print("apple2");
     final oauthCredential = firebaseauth.OAuthProvider("apple.com").credential(
       idToken: appleCredential.identityToken,

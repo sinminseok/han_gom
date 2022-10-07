@@ -5,6 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import '../../../../ViewModel/Cure_tool_ViewModel.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 
 //치료도구 상세 페이지
@@ -20,12 +21,22 @@ class _Tool_Detail_ViewState extends State<Tool_Detail_View> {
   //이미지 가져올 경로
 
   String? downloadURL;
+  String? title;
+  String? content;
 
 
 
-  load_data()async{
-    var storageRef = FirebaseStorage.instance.ref('cure_disease/cure1.png');
+
+
+  future_void()async{
+    var storageRef = FirebaseStorage.instance.ref().child('cure_disease/cure1.png');
+
     downloadURL = await storageRef.getDownloadURL();
+    var return_value = Provider.of<Cure_tool_ViewModel>(context, listen: false).return_collection_doc_value(widget.doc_path!);
+
+    title = Provider.of<Cure_tool_ViewModel>(context, listen: false).cure_tool_Model!.title;
+    content = Provider.of<Cure_tool_ViewModel>(context, listen: false).cure_tool_Model!.content;
+    return return_value;
   }
 
   void showDefaultHeightModalBottomSheet(BuildContext context, Size size) {
@@ -95,7 +106,7 @@ class _Tool_Detail_ViewState extends State<Tool_Detail_View> {
           backgroundColor: Colors.white,
         ),
         body: FutureBuilder(
-          future:  Provider.of<Cure_tool_ViewModel>(context, listen: false).return_collection_doc_value(widget.doc_path!),
+          future:  future_void(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.hasError) {
               return Text("Something went wrong");
@@ -113,25 +124,29 @@ class _Tool_Detail_ViewState extends State<Tool_Detail_View> {
                   children: [
                     InkWell(
                       onTap: ()async{
-                        var storageRef = FirebaseStorage.instance.ref().child('cure_disease');
-                        print(storageRef.getMetadata());
-                     //   downloadURL = await storageRef.getDownloadURL();
-                    //    print(storageRef);
+                       // load_data();
+                        // Get a non-default Storage bucket
+                    //     final storage = FirebaseStorage.instanceFor(bucket: "gs://hang-c1561.appspot.com");
+                    //
+                    //     print(storageRef.getDownloadURL());
+                    //    downloadURL = await storageRef.getDownloadURL();
+                    // //    print(storageRef);
                       },
                       child: Container(
                         width: size.width,
                         height: size.height * 0.23,
                         color: PrimaryColor,
-                        child: Text("${Provider.of<Cure_tool_ViewModel>(context, listen: false).cure_tool_Model!.title}"),
+                        child: Text("${title}"),
                       ),
                     ),
-                    // Container(
-                    //   child: Image(
-                    //     image: NetworkImage(
-                    //      downloadURL!
-                    //     ),
-                    //   ),
-                    // )
+                    Container(
+                      child: Image(
+                        image: NetworkImage(
+                         downloadURL!
+                        ),
+                      ),
+                    ),
+
 
 
 
@@ -140,7 +155,11 @@ class _Tool_Detail_ViewState extends State<Tool_Detail_View> {
               );
             }
 
-            return Text("loading");
+            return Center(
+                child: LoadingAnimationWidget.staggeredDotsWave(
+                  color: Colors.black,
+                  size: 100,
+                ));
           },
         ));
   }

@@ -138,7 +138,7 @@ class _Home_ViewState extends State<Home_View> {
               Container(
                 margin: EdgeInsets.fromLTRB(0.w, 20.h, 0.w, 0.h),
                 width: 390.w,
-                height: 300.h,
+                height: 200.h,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -147,7 +147,7 @@ class _Home_ViewState extends State<Home_View> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(15.w, 15.h, 0.w, 0.h),
+                      margin: EdgeInsets.fromLTRB(15.w, 15.h, 0.w, 10.h),
                       child: Text(
                         "# 한의원 치료도구 _잘 알아야, 잘 받는다!",
                         style: TextStyle(
@@ -158,7 +158,7 @@ class _Home_ViewState extends State<Home_View> {
                         margin: EdgeInsets.fromLTRB(0.w, 10.h, 0.w, 0.h),
                         width: 360.w,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Tool_Widget(
                               size: size,
@@ -196,11 +196,9 @@ class _Home_ViewState extends State<Home_View> {
                     Container(
                         margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
 
-
-
                         width: 360.w,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Tool_Widget(
                                 size: size,
@@ -241,7 +239,7 @@ class _Home_ViewState extends State<Home_View> {
               Container(
                 margin: EdgeInsets.fromLTRB(0.w, 20.h, 0.w, 0.h),
                 width: 390.w,
-                height: 250.h,
+                height: 230.h,
                 decoration: BoxDecoration(
                   color: Colors.grey.shade100,
                   borderRadius: BorderRadius.circular(10),
@@ -261,7 +259,7 @@ class _Home_ViewState extends State<Home_View> {
                         margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
                         width: 360.w,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Cure_disease_Widget(
                               size: size,
@@ -304,7 +302,7 @@ class _Home_ViewState extends State<Home_View> {
                         margin: EdgeInsets.fromLTRB(0.w, 15.h, 0.w, 0.h),
                         width: 360.w,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Cure_disease_Widget(
                               size: size,
